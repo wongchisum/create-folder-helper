@@ -1,0 +1,3 @@
+// 忽略ts语义检查,生成pages的导出文件
+///@ts-nocheck
+
