@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "esno ./scripts/createRouter/bootstrap.ts --name=router.config.tsx --entry=./src/pages --dir=./src"
+    "test": "esno ./scripts/createRouter/bootstrap.ts"
   },
   "repository": {
     "type": "git",
