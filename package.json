@@ -1,10 +1,15 @@
 {
-  "name": "create-react-router",
-  "version": "1.0.0",
+  "name": "cr-helper",
+  "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "bin":{
+    "cr-helper":"lib/createPage/bootstrap.js"
+  },
   "scripts": {
-    "test": "esno ./scripts/createRouter/bootstrap.ts"
+    "dev:router": "esno ./scripts/createRouter/bootstrap.ts",
+    "dev:page":"esno ./scripts/createPage/bootstrap.ts --name=TestDir --files=index.less,logic.ts,index.tsx,logic.ts",
+    "build":"npx tsc --build",
+    "test:page":"cr-helper --name=Test --files=index.tsx,index.less,logic.ts"
   },
   "repository": {
     "type": "git",

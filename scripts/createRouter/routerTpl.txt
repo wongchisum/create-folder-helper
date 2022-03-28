@@ -1,7 +1,0 @@
-// 忽略ts语义检查,生成react router v5的配置文件
-///@ts-nocheck
-import {componentsList} from './pages';
-
-const routes = [routerConfig];
-
-export default routes;

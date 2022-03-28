@@ -1,5 +1,5 @@
+#!/usr/bin/env node
 import { scanEntry, createRouterFile } from "./generate";
-// import { createRouterFile, createExportFile } from "./create";
 import {
   DefaultOptions,
   CommandMapRules,
@@ -7,7 +7,6 @@ import {
   ValueRule,
 } from "./constance";
 import { getOptionsFromCommandArgs, mergeOptions } from "../helper/command";
-import type { RecordType } from "./types";
 
 (async function () {
   // 拆解命令行参数，生成配置并过滤
@@ -19,14 +18,4 @@ import type { RecordType } from "./types";
 
   // 在src目录下创建react router配置文件
   Array.isArray(dirs) && createRouterFile(dirs, entry, name);
-
-  console.log("dirs", dirs);
-  // 利用路由信息进行模板的替换，创建配置文件
-  // if (Array.isArray(routers)) {
-  //   const { dir, name,entry } = merged;
-  //   // 创建路由配置文件
-  //   createRouterFile(routers, dir, name);
-  //   // 更新导出文件
-  //   createExportFile(routers,entry);
-  // }
 })();

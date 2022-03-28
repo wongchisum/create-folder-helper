@@ -1,6 +1,4 @@
-# create-react-routers
-
-
+# cr-helper
 
 ## 备注：
 
@@ -8,9 +6,13 @@
 
 
 
+## 开发动机:
+
+在开发过程中，创建一个视图文件夹经常需要一次性创建多份文件（如：less文件/logic文件/type文件等），非常费劲。我们期望用一个指令实现对视图文件夹的创建，以及对项目路由配置的更新。
+
+
+
 ### 功能需求：
-
-
 
 #### 1.实现一个指令，支持监听文件。(监听部分未开发)
 
@@ -34,49 +36,38 @@
 
 ---
 
+#### 2.实现一个指令，支持创建前端视图文件。(第一版开发完成)
 
-
-#### 2.实现一个指令，支持创建前端文件。(开发中)
-
-支持调用npm scripts，去创建一个前端的视图文件，可能包含index.(j|t)sx?,以及对应的types文件，
-
-
+支持调用npm scripts，去创建一个前端的视图文件，根据参数进行相应文件的创建
 
 ```
-// esno ./scripts/createPage/bootstrap.ts --name=Home --type=ts --style=less --css-module
+// esno ./scripts/createPage/bootstrap.ts \
+// --name=TestDir --files=index.less,logic.ts,index.tsx,logic.ts
 
 // 最终产物
 
 /src
     /pages/
-        /Home
-            types.ts // 类型定义
-            index.tsx  //  视图文件
-            logic.ts // 逻辑文件
-            index.module.less // 样式文件(Css Module)
+        /TestDir
+            index.less 
+            logic.ts  
+            index.tsx 
+            logic.ts 
          
 ```
 
-
-
 选项：
 
--l --log 是否在终端展示相应的控制台信息，可用于调试（默认不开启）
--n --name 生成页面的名称（建议使用大驼峰格式命名:如 MyPage ）
--f --files 生成页面下的文件名称(默认生成index.tsx + types.ts + logic.ts + index.module.less)
+-n --name 生成视图文件的名称（建议使用大驼峰格式命名:如 MyPage ）
+-f --files 生成页面下的文件名称，多个文件名称使用逗号隔开
 
 ---
 
-
-
-
 ## 3.后续待办事项：
 
+- [x] 生成bin，增加测试代码(后续调用方式:crp crr)
 
-
-- [ ] 生成bin，增加测试代码
-
-- [ ] 修复生成页面入口文件(src/pages/index.ts，fs扫描出错)
+- [x] 修复生成页面入口文件(src/pages/index.ts，fs扫描出错)
 
 - [ ] 支持react router v5/v6版本的配置
 
@@ -84,8 +75,10 @@
 
 - [ ] 发布npm包，作为devDependencies在其他项目应用
 
-- [ ] 优化代码本身，整理代码逻辑，整理流程图的开发思路
+- [x] 优化代码本身，整理代码逻辑，整理流程图的开发思路
 
-- [ ] 配置方式优化，支持npm scripts或者esm/cjs方式调用
+- [x] 配置方式优化，支持npm scripts或者esm/cjs方式调用
 
-- [ ] 优化文档，增加示例
+- [x] 优化文档，增加示例
+
+- [ ] 使用终端的交互方式收集参数(如inquirer)，避免scripts过长
