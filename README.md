@@ -1,4 +1,4 @@
-# create-files-command
+# create-folder-helper
 
 ## 备注：
 
@@ -38,7 +38,7 @@
 
 - [x] 生成 bin，yarn link/unlink方式调试
 
-- [x] 修复生成页面入口文件fs 扫描出错
+- [x] 修复业务逻辑错误
 
 - [x] 优化代码本身，整理代码逻辑
 

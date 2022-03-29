@@ -1,11 +1,11 @@
 {
-  "name": "create-folder",
+  "name": "create-folder-helper",
   "version": "0.0.1",
   "description": "实验性质的项目，请勿用于生产环境。一个命令生成相应文件夹结构",
   "main": "dist/bootstrap.js",
   "source": "src/bootstrap.ts",
   "bin": {
-    "create-folder": "dist/bootstrap.js"
+    "cfh": "dist/bootstrap.js"
   },
   "scripts": {
     "dev": "esno ./src/bootstrap.ts",
