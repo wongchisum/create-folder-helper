@@ -29,7 +29,7 @@ cfh -h // 等同于 cfh --help
 
  [Tip] Command help:
 
-  cfc
+  cfh
     -v or --version : Get current version of this tool.
     -h or --help:Get help with command tips.
     -n or --name:The name of target folder.
@@ -46,7 +46,7 @@ cfh -h // 等同于 cfh --help
 配置:
 
 ```
-  cfc
+  cfh
     -v or --version : 查看当前版本
     -h or --help:查看命令行可用参数
     -n or --name:需要创建的文件夹名称
