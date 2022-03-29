@@ -1,215 +1,70 @@
-var $cClpN$process = require("process");
-var $cClpN$fs = require("fs");
-var $cClpN$path = require("path");
-var $cClpN$inquirer = require("inquirer");
-
-function $parcel$interopDefault(a) {
-  return a && a.__esModule ? a.default : a;
-}
-/**
- * 带颜色的终端输出
- */ const $4024f9c38676037c$var$logger = {
-    info (message = "") {
-        console.log("\x1b[32m", "[Info]", message);
-    },
-    tip (message = "") {
-        console.log("\x1b[34m", "[Tip]", message);
-    },
-    warn (message = "") {
-        console.log("\x1b[33m", "[Warn]", message);
-    },
-    error (message = "") {
-        console.log("\x1b[31m", "[Error]", message);
+#!/usr/bin/env node
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var $4024f9c38676037c$export$2e2bcd8739ae039 = $4024f9c38676037c$var$logger;
-
-
-
-function $ed133e937de09d6c$export$2e2bcd8739ae039() {
-    $4024f9c38676037c$export$2e2bcd8739ae039.tip(`Command help:\n
-  cfc 
-    -v or --version : Get current version of this tool.
-    -h or --help:Get help with command tips.
-    -n or --name:The name of target folder. 
-    -e or --entry:Use relative path to select entry folder.
-    -f or --files:Using string to create what file you like. Like "index.less,index.tsx"
-  `);
-    $cClpN$process.exit(0);
-}
-
-
-
-
-function $97f110eb6b0cbcf9$export$2e2bcd8739ae039() {
-    $4024f9c38676037c$export$2e2bcd8739ae039.info(`Create Files Command version :0.0.1`);
-    $cClpN$process.exit(0);
-}
-
-
-
-
-
-
-const $159cfe1ff9116080$export$e81e70f384f1b258 = (reason)=>{
-    $4024f9c38676037c$export$2e2bcd8739ae039.error(`Process will exit because:${reason}`);
-    $cClpN$process.exit(1);
-};
-
-
-
-function $ac3463b7622d0a47$export$2e2bcd8739ae039(config) {
-    const { entry: entry , name: name , files: files  } = config;
-    // 检查指定的入口是否有存在相应文件夹,如果有,不执行本次任务
-    const targetDir = ($parcel$interopDefault($cClpN$path)).resolve(entry, name);
-    if (($parcel$interopDefault($cClpN$fs)).existsSync(targetDir)) return $159cfe1ff9116080$export$e81e70f384f1b258(`Dir [${name}] is already exist!`);
-    // 根据配置进行创建
-    try {
-        // 根据files命令进行生成
-        ($parcel$interopDefault($cClpN$fs)).mkdirSync(targetDir);
-        ($parcel$interopDefault($cClpN$fs)).opendirSync(targetDir);
-        // 遍历，去重，生成相应的文件
-        const dirs = files.split(",").filter((fileName)=>fileName
-        );
-        const uniqDirs = Array.from(new Set(dirs));
-        uniqDirs.forEach((dir)=>{
-            const filePath = ($parcel$interopDefault($cClpN$path)).resolve(targetDir, dir);
-            ($parcel$interopDefault($cClpN$fs)).writeFileSync(filePath, "");
-            $4024f9c38676037c$export$2e2bcd8739ae039.info(`${dir} created ✔`);
+Object.defineProperty(exports, "__esModule", { value: true });
+var commands_1 = require("./commands");
+var command_1 = require("./helper/command");
+var constance_1 = require("./constance");
+(function () {
+    return __awaiter(this, void 0, void 0, function () {
+        var options, merged, entry, files, name, help, version, cliOptions;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    options = (0, command_1.getOptionsFromCommandArgs)(constance_1.KeyRule, constance_1.ValueRule);
+                    merged = (0, command_1.mergeOptions)(options, constance_1.CommandMapRules);
+                    entry = merged.entry, files = merged.files, name = merged.name, help = merged.help, version = merged.version;
+                    if (!help) return [3 /*break*/, 1];
+                    (0, commands_1.help)();
+                    return [3 /*break*/, 4];
+                case 1:
+                    if (!version) return [3 /*break*/, 2];
+                    (0, commands_1.version)();
+                    return [3 /*break*/, 4];
+                case 2: return [4 /*yield*/, (0, commands_1.options)({ entry: entry, files: files, name: name })];
+                case 3:
+                    cliOptions = _a.sent();
+                    if (cliOptions) {
+                        (0, commands_1.create)(cliOptions);
+                    }
+                    _a.label = 4;
+                case 4: return [2 /*return*/];
+            }
         });
-        $4024f9c38676037c$export$2e2bcd8739ae039.info(` Create ${name} success!`);
-    } catch (error) {
-        $159cfe1ff9116080$export$e81e70f384f1b258(`$Create failed!${error}`);
-    }
-}
-
-
-
-
-
-
-const $0ea1e332853caffe$export$1be7d3a80974d83 = {
-    h: "help",
-    help: "help",
-    v: "version",
-    version: "version",
-    name: "name",
-    n: "name",
-    files: "files",
-    f: "files",
-    entry: "entry",
-    e: "entry"
-};
-const $0ea1e332853caffe$export$677e6199c7753f27 = {
-    entry: ($parcel$interopDefault($cClpN$path)).resolve($cClpN$process.cwd(), "./src/pages")
-};
-const $0ea1e332853caffe$export$8dcde9f09c2ebf25 = /(?<=-{1,2})\w+/;
-const $0ea1e332853caffe$export$29859a7c66b63295 = /(?<=\=)\S+/;
-const $0ea1e332853caffe$export$4c23a4e82f7b471 = /^(i|I)ndex\.(t|j)sx?$/;
-
-
-const { prompt: $7f8ff1fdaeff0f10$var$prompt  } = ($parcel$interopDefault($cClpN$inquirer));
-async function $7f8ff1fdaeff0f10$var$getFolderName() {
-    const { folderName: folderName  } = await $7f8ff1fdaeff0f10$var$prompt({
-        type: "input",
-        name: "folderName",
-        message: "Input your new folder name:"
     });
-    return folderName;
-}
-async function $7f8ff1fdaeff0f10$var$getEntryName() {
-    const { entryName: entryName  } = await $7f8ff1fdaeff0f10$var$prompt({
-        type: "input",
-        name: "entryName",
-        message: `Input your entry path: (Default: src/pages )`
-    });
-    return entryName;
-}
-async function $7f8ff1fdaeff0f10$var$getFilleNames() {
-    const { fileNames: fileNames  } = await $7f8ff1fdaeff0f10$var$prompt({
-        type: "input",
-        name: "fileNames",
-        message: "Input your file names: (Like: index.less,index.tsx)"
-    });
-    return fileNames;
-}
-async function $7f8ff1fdaeff0f10$export$2e2bcd8739ae039(config) {
-    const { entry: entry , files: files , name: name  } = config;
-    const entryName = entry || await $7f8ff1fdaeff0f10$var$getEntryName() || $0ea1e332853caffe$export$677e6199c7753f27.entry;
-    const folderName = name || await $7f8ff1fdaeff0f10$var$getFolderName();
-    if (!folderName) $159cfe1ff9116080$export$e81e70f384f1b258("Invalid folder name!");
-    const fileNames = files || await $7f8ff1fdaeff0f10$var$getFilleNames();
-    if (!fileNames) $159cfe1ff9116080$export$e81e70f384f1b258("Invalid file names!");
-    return {
-        name: folderName,
-        entry: entryName,
-        files: fileNames
-    };
-}
-
-
-
-
-
-/**
- * 命令行相应工具函数
- */ /**
- * 根据命令行参数拆解成一组对象,进行合并
- * --log -> {log:true}
- * -name=router.js -> {name:"router.js"}
- */ function $eb71579f4a5a77fa$var$createOption(command, keyRule, valueRule) {
-    const [key] = command.match(keyRule) ?? [];
-    const [value] = command.match(valueRule) ?? [];
-    if (!key) return {};
-    return {
-        [key]: value ?? true
-    };
-}
-function $eb71579f4a5a77fa$export$d2ad47c36d963a35(keyRule, valueRule) {
-    const commandArgs = $cClpN$process.argv.slice(2);
-    const options = commandArgs.reduce((prev, current)=>{
-        let option = $eb71579f4a5a77fa$var$createOption(current, keyRule, valueRule);
-        return {
-            ...prev,
-            ...option
-        };
-    }, {});
-    return options;
-}
-function $eb71579f4a5a77fa$export$235b7fc70b9fc359(options, map) {
-    const keys = Object.keys(options);
-    const merged = keys.reduce((prev, current)=>{
-        const key = map[current];
-        const value = options[current];
-        if (key && value) return {
-            ...prev,
-            [key]: value
-        };
-        else return prev;
-    }, {});
-    return merged;
-}
-
-
-
-(async function() {
-    // 拆解命令行参数，生成配置并过滤
-    const options = $eb71579f4a5a77fa$export$d2ad47c36d963a35($0ea1e332853caffe$export$8dcde9f09c2ebf25, $0ea1e332853caffe$export$29859a7c66b63295);
-    const merged = $eb71579f4a5a77fa$export$235b7fc70b9fc359(options, $0ea1e332853caffe$export$1be7d3a80974d83);
-    const { entry: entry , files: files , name: name , help: help , version: version  } = merged;
-    // --help 或者 -h 执行
-    if (help) $ed133e937de09d6c$export$2e2bcd8739ae039();
-    else if (version) $97f110eb6b0cbcf9$export$2e2bcd8739ae039();
-    else {
-        // 补全参数，生成完整配置
-        const cliOptions = await $7f8ff1fdaeff0f10$export$2e2bcd8739ae039({
-            entry: entry,
-            files: files,
-            name: name
-        });
-        if (cliOptions) $ac3463b7622d0a47$export$2e2bcd8739ae039(cliOptions);
-    }
 })();
-
-
-//# sourceMappingURL=bootstrap.js.map

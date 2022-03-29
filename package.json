@@ -1,6 +1,6 @@
 {
   "name": "create-folder-helper",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "实验性质的项目，请勿用于生产环境。一个命令生成相应文件夹结构",
   "main": "dist/bootstrap.js",
   "source": "src/bootstrap.ts",
@@ -9,7 +9,8 @@
   },
   "scripts": {
     "dev": "esno ./src/bootstrap.ts",
-    "build": "npx parcel build",
+    "build": "npx tsc",
+    "prepublish": "yarn build",
     "test:help": "esno ./src/bootstrap.ts --help",
     "test:version": "esno ./src/bootstrap.ts --version",
     "test:create": "esno ./src/bootstrap.ts --entry=./playground --name=Test --files=index.tsx,index.less,logic.ts",
