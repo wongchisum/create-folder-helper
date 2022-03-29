@@ -1,19 +1,20 @@
 /**
- * 配置项的映射规则
- * 其他命令的等待功能开发后再增加拓展
- * watch: "watch",
- * w: "watch",
- * log: "log",
- * l: "log",
- * dir:"dir",
- * d:"dir"
- *
+ *常量
  */
 import path from "path";
 
+/**
+ * 选项和配置的映射
+ */
 export const CommandMapRules = {
+  h: "help",
+  help: "help",
+  v: "version",
+  version: "version",
   name: "name",
   n: "name",
+  files: "files",
+  f: "files",
   entry: "entry",
   e: "entry",
 };
@@ -22,7 +23,6 @@ export const CommandMapRules = {
  * 默认配置项
  */
 export const DefaultOptions = {
-  name: "router.override.tsx",
   entry: path.resolve(process.cwd(), "./src/pages"),
 };
 

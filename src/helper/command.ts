@@ -44,11 +44,7 @@ export function getOptionsFromCommandArgs(keyRule: RegExp, valueRule: RegExp) {
  *
  * 合并后的配置需要和默认配置做合并
  */
-export function mergeOptions(
-  options: RecordType,
-  map: RecordType,
-  defaultOptions: RecordType
-) {
+export function mergeOptions(options: RecordType, map: RecordType) {
   const keys = Object.keys(options);
   const merged = keys.reduce((prev: RecordType, current: string) => {
     const key = map[current];
@@ -60,5 +56,5 @@ export function mergeOptions(
     }
   }, {});
 
-  return Object.assign(defaultOptions, merged);
+  return merged;
 }
