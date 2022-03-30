@@ -71,12 +71,12 @@ cfh -h // 等同于 cfh --help
 
 {
 	"scripts":{
-		"generate":npx cfh --entry=./src/pages --files=index.less,index.tsx,logic.ts,types.ts"
+		"mkdir":npx cfh --entry=./src/pages --files=index.less,index.tsx,logic.ts,types.ts"
 	}
 }
 ```
 
-那么每一次运行yarn generate，只需要根据命令行交互输入的名称，就可以在这个位置创建不同的文件夹了，且每个文件夹都包含相应的名称。
+那么每一次运行yarn mkdir，只需要根据命令行交互输入的名称，就可以在这个位置创建不同的文件夹了，且每个文件夹都包含相应的名称。
 
 
 
@@ -105,6 +105,10 @@ cfh -h // 等同于 cfh --help
 - [ ] 开发允许批量新增的功能
 
 - [ ] 增加测试代码
+
+- [ ] 如果没有设置当前的entry相对路径，使用终端运行时的Workdir目录作为entry
+
+- [ ] 修复以global安装的形式无法调用cfh的问题
 
   
 
