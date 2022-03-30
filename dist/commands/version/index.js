@@ -9,7 +9,7 @@ var logger_1 = __importDefault(require("../../helper/logger"));
  * 使用: cfc --version 或者  cfc --version时执行
  */
 function getVersion() {
-    logger_1.default.info("Create Files Command version :0.0.1");
+    logger_1.default.info("Create Files Command version :0.0.4");
     process.exit(0);
 }
 exports.default = getVersion;

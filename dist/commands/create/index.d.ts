@@ -8,5 +8,5 @@ declare type CreateConfig = {
  * @param targetDir:string 指定创建文件的入口路径
  * @param files: 需要创建的文件名称，多个名称以逗号隔开
  */
-export default function create(config: CreateConfig): undefined;
+export default function create(config: CreateConfig): void;
 export {};

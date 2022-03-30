@@ -44,7 +44,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
  */
 var inquirer_1 = __importDefault(require("inquirer"));
 var process_1 = require("../../helper/process");
-var constance_1 = require("../../constance");
 var prompt = inquirer_1.default.prompt;
 function getFolderName() {
     return __awaiter(this, void 0, void 0, function () {
@@ -71,7 +70,7 @@ function getEntryName() {
                 case 0: return [4 /*yield*/, prompt({
                         type: "input",
                         name: "entryName",
-                        message: "Input your entry path: (Default: src/pages )",
+                        message: "Input your entry relative path: \n Default: [Current work dir:".concat(process.cwd(), "]"),
                     })];
                 case 1:
                     entryName = (_a.sent()).entryName;
@@ -80,7 +79,7 @@ function getEntryName() {
         });
     });
 }
-function getFilleNames() {
+function getFileNames() {
     return __awaiter(this, void 0, void 0, function () {
         var fileNames;
         return __generator(this, function (_a) {
@@ -111,7 +110,7 @@ function optionsCommand(config) {
                     _a = (_d.sent());
                     _d.label = 2;
                 case 2:
-                    entryName = _a || constance_1.DefaultOptions.entry;
+                    entryName = _a || process.cwd();
                     _b = name;
                     if (_b) return [3 /*break*/, 4];
                     return [4 /*yield*/, getFolderName()];
@@ -125,15 +124,12 @@ function optionsCommand(config) {
                     }
                     _c = files;
                     if (_c) return [3 /*break*/, 6];
-                    return [4 /*yield*/, getFilleNames()];
+                    return [4 /*yield*/, getFileNames()];
                 case 5:
                     _c = (_d.sent());
                     _d.label = 6;
                 case 6:
-                    fileNames = _c;
-                    if (!fileNames) {
-                        (0, process_1.handleErrorWithExitProcess)("Invalid file names!");
-                    }
+                    fileNames = _c || "";
                     return [2 /*return*/, { name: folderName, entry: entryName, files: fileNames }];
             }
         });

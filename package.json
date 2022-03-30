@@ -9,6 +9,7 @@
   },
   "scripts": {
     "dev": "esno ./src/bootstrap.ts",
+    "prebuild": "rm -rf ./dist",
     "build": "npx tsc",
     "prepublish": "yarn build",
     "test:help": "esno ./src/bootstrap.ts --help",

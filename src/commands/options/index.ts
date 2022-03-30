@@ -26,7 +26,7 @@ async function getEntryName() {
   const { entryName } = await prompt({
     type: "input",
     name: "entryName",
-    message: `Input your entry relative path: \n Default: [Current work dir:${process.env.INIT_CWD}]`,
+    message: `Input your entry relative path: \n Default: [Current work dir:${process.cwd()}]`,
   });
   return entryName;
 }
@@ -43,7 +43,7 @@ async function getFileNames() {
 
 export default async function optionsCommand(config: ConfigType) {
   const { entry, files, name } = config;
-  const entryName = entry || (await getEntryName()) || process.env.INIT_CWD;
+  const entryName = entry || (await getEntryName()) || process.cwd();
   const folderName = name || (await getFolderName());
   if (!folderName) {
     handleErrorWithExitProcess("Invalid folder name!");

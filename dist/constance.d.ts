@@ -1,4 +1,7 @@
 /**
+ *常量
+ */
+/**
  * 选项和配置的映射
  */
 export declare const CommandMapRules: {
@@ -12,12 +15,6 @@ export declare const CommandMapRules: {
     f: string;
     entry: string;
     e: string;
-};
-/**
- * 默认配置项
- */
-export declare const DefaultOptions: {
-    entry: string;
 };
 /**
  * 前置断言，用于匹配--[option]=[value]的option部分
