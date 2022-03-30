@@ -1,7 +1,6 @@
 /**
  *常量
  */
-import path from "path";
 
 /**
  * 选项和配置的映射
@@ -17,13 +16,6 @@ export const CommandMapRules = {
   f: "files",
   entry: "entry",
   e: "entry",
-};
-
-/**
- * 默认配置项
- */
-export const DefaultOptions = {
-  entry: path.resolve(process.cwd(), "./src/pages"),
 };
 
 /**

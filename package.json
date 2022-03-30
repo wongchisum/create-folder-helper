@@ -1,7 +1,7 @@
 {
   "name": "create-folder-helper",
-  "version": "0.0.2",
-  "description": "实验性质的项目，请勿用于生产环境。一个命令生成相应文件夹结构",
+  "version": "0.0.4",
+  "description": "一个命令生成相应文件夹结构",
   "main": "dist/bootstrap.js",
   "source": "src/bootstrap.ts",
   "bin": {

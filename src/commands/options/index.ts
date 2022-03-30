@@ -3,7 +3,6 @@
  */
 import inquirer from "inquirer";
 import { handleErrorWithExitProcess } from "../../helper/process";
-import { DefaultOptions } from "../../constance";
 
 type ConfigType = {
   entry: unknown;
@@ -27,12 +26,12 @@ async function getEntryName() {
   const { entryName } = await prompt({
     type: "input",
     name: "entryName",
-    message: `Input your entry path: (Default: src/pages )`,
+    message: `Input your entry relative path: \n Default: [Current work dir:${process.env.INIT_CWD}]`,
   });
   return entryName;
 }
 
-async function getFilleNames() {
+async function getFileNames() {
   const { fileNames } = await prompt({
     type: "input",
     name: "fileNames",
@@ -44,17 +43,13 @@ async function getFilleNames() {
 
 export default async function optionsCommand(config: ConfigType) {
   const { entry, files, name } = config;
-  const entryName = entry || (await getEntryName()) || DefaultOptions.entry;
+  const entryName = entry || (await getEntryName()) || process.env.INIT_CWD;
   const folderName = name || (await getFolderName());
   if (!folderName) {
     handleErrorWithExitProcess("Invalid folder name!");
   }
 
-  const fileNames = files || (await getFilleNames());
-
-  if (!fileNames) {
-    handleErrorWithExitProcess("Invalid file names!");
-  }
+  const fileNames = files || (await getFileNames()) || "";
 
   return { name: folderName, entry: entryName, files: fileNames };
 }
