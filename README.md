@@ -2,7 +2,7 @@
 
 ## 备注：
 
-一个命令方便创建
+create-folder-helper,一个命令方便生成项目固定文件结构的npm cli
 
 ------
 
