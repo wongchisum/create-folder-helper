@@ -27,7 +27,7 @@ create-folder-helper,一个命令方便生成项目固定文件结构的npm cli
 安装依赖(目前已知全局安装无法调用，请安装为**devDependencies**)
 
 ```
-yarn add create-folder-helper --dev
+yarn add @wongchisum/create-folder-helper --dev
 ```
 
 安装完毕之后，可以使用cfh这个命令进行检查(cfh:create folder helper的缩写)
